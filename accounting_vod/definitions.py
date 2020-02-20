@@ -102,6 +102,8 @@ def build_document_json(document):
 def build_partner_json(partner):
     data = {
         '_name': 'Partner',
+        '_sorting': ['Sifra', 'Naziv1', 'Naziv2', 'Naziv3', 'Naslov', 'Postna_stevilka', 'Kraj', 'Drzava',
+                     'DDV_status', 'Identifikacijska_stevilka'],
         'code': {
             '_name': 'Sifra',
             '_value': partner.code
@@ -152,6 +154,9 @@ def build_partner_json(partner):
 def build_entry_json(entry):
     data = {
         '_name': 'Knjizba',
+        '_sorting': ['Vrsta_knjizbe', 'Vrsta_dokumenta', 'Konto', 'Partner', 'Stroskovno_mesto', 'Analitika1',
+                     'Analitika2', 'Analitika3', 'Analitika4', 'Analitika5', 'Analitika6', 'Debet', 'Kredit',
+                     'Valuta_debet', 'Valuta_kredit', 'Osnova', 'Otvoritev', 'Sifra_valute'],
         'entry_type': {
             '_name': 'Vrsta_knjizbe',
             '_value': entry.entry_type
@@ -218,7 +223,7 @@ def build_entry_json(entry):
     if entry.currency:
         data['currency'] = {
             '_name': 'Sifra_valute',
-            '_value': str(entry.currency)
+            '_value': str(currency_to_currency_code(entry.currency))
         }
 
     if entry.debit:
@@ -247,3 +252,12 @@ def build_entry_json(entry):
         }
 
     return data
+
+
+def currency_to_currency_code(currency):
+    if currency.upper() == 'USD':
+        return 840
+    elif currency.upper() == 'EUR':
+        return 978
+
+    return currency
