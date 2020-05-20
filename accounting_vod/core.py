@@ -8,11 +8,11 @@ class Partner:
     def __init__(self, code, name, address, zip_code, city, country, tax_number, tax_payer=True):
         self.code = code
         self.name = name
-        self.address = address
-        self.zip_code = zip_code
-        self.city = city
-        self.country = country
-        self.tax_number = tax_number
+        self.address = address or ''
+        self.zip_code = zip_code or ''
+        self.city = city or ''
+        self.country = country or ''
+        self.tax_number = tax_number or ''
         self.tax_payer = tax_payer
 
 
