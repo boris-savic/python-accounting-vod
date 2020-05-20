@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='accounting_vod',
     packages=['accounting_vod'],
-    version='0.1.1',
+    version='0.1.2',
     description='Generate VOD XML export for accounting software ',
     author='Boris Savic',
     author_email='boris70@gmail.com',
